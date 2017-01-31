@@ -1,0 +1,54 @@
+.p-10{
+    padding: 10px;
+}
+
+.p-5{
+    padding: 5px;
+}
+
+.border{
+    border: 1px solid grey;
+}
+
+.chat-div{
+    height: 500px;
+}
+
+.users-div{
+    height: 500px;
+}
+
+.user-list{
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+.user-list:hover{
+    background: yellow;
+}
+
+#message{
+    width:100%;
+}
+
+#message{
+    width:100%;
+}
+
+.chat-active{
+    background: green;
+}
+
+.chat-data{
+    overflow: scroll;
+    height: 470px;
+}
+
+
+@keyframes messageblink { 
+   50% { border-color: #f3d2d2;background:#f3d2d2; }
+}
+.users-div .message-blink{ /*or other element you want*/
+    animation: messageblink .5s step-end infinite alternate;
+    cursor: pointer;
+}

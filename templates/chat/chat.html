@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block page_title %}Chat App{% endblock %}
+
+
+{% block header %}
+    
+<div class="col-md-12 p-10 border">
+    <center>Chat Application</center>
+    Welcome, {{request.user.username}}
+
+    {% if request.user %}
+        <a href="/logout" class="pull-right">Logout</a>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block contents %}
+<input type="hidden" name="user_id" id="user_id" value="{{request.user.id}}">
+<input type="hidden" name="username" id="username" value="{{request.user.username}}">
+<div class="col-md-12 p-10 border">
+    <div class="col-md-9 pull-left border chat-div">
+        <div class="col-md-12 chat-data">
+        </div>
+    </div>
+
+    <div class="col-md-3 border users-div">
+        {% for user in users %}
+            <div class="col-md-12 user-list p-5 user-{{user.id}}" data-pk="{{user.id}}" username="{{user.username}}">
+                <div class="col-md-3"></div>
+                <div class="col-md-9">{{user.username}}</div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="col-md-12 message-text border p-10">
+    
+    <div class="col-md-10">
+        <input type="text" name="message" id="message" ></input>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block js_extra %}
+    <script type="text/javascript" src="{% static 'js/reconnecting-websocket.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/chat/script.js'%}"></script>
+{% endblock %}
